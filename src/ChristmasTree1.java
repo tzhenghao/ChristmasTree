@@ -1,5 +1,6 @@
-// Zheng Hao Tan
-// December 24, 2012
+// Name: Zheng Hao Tan
+// Email: tanzhao@umich.edu
+// Date: December 24, 2012
 
 // I got so bored that I decided to do this on Christmas eve. Muhahaha! :D
 
@@ -13,6 +14,7 @@ public class ChristmasTree1
 	public static void main(String[]args)
 	{
 		Random rand = new Random();
+		
 		// Start with a red background.
 		DrawingPanel panel = new DrawingPanel(700, 700);
 		Graphics g = panel.getGraphics();
@@ -24,7 +26,11 @@ public class ChristmasTree1
 		drawMessage(g);
 	}
 	
-	// This method draws the background of the Christmas card.
+	/**
+	 *  This method draws the background of the Christmas card.
+	 * @param g
+	 * @param rand
+	 */
 	public static void drawBackground(Graphics g, Random rand)
 	{
 		// The top and bottom part of the card.
@@ -39,7 +45,7 @@ public class ChristmasTree1
 		// Snow.
 		g.setColor(Color.WHITE);
 		
-		for(int i = 0; i < 200; i++)
+		for(int i = 0; i < 200; ++i)
 		{
 			int snowX = rand.nextInt(700*3/5-5)+ 700/5;
 			int snowY = rand.nextInt(700*3/5-5)+ 700/5;
@@ -47,18 +53,21 @@ public class ChristmasTree1
 		}
 	}
 	
-	//This method draws the Christmas tree, including the bells and lighting.
+	/**
+	 *  This method draws the Christmas tree, including the bells and lighting.
+	 * @param g
+	 * @param rand
+	 */
 	public static void drawTree(Graphics g, Random rand)
 	{
-		// This nested for loop draws the tree itself.
 		g.setColor(Color.GREEN);
 		
 		// Do it from bottom up and decrease the size of the lines.
 		int size = 0;
-		while (size <= 150)
-		{
+		
+		while (size <= 150) {
 			g.drawLine(200+size,  400-size, 500-size, 400-size);
-			size++;
+			++size;
 		}
 		
 		// This for loop draws the bells on the tree.
@@ -81,34 +90,34 @@ public class ChristmasTree1
 			int bellX = rand.nextInt(301)+ 200;
 			int bellY = rand.nextInt(151)+ 250;
 			
-			if (bellX < 250)
-			{
-				if(bellY < (bellY/bellX*bellX))
-				{
-					g.fillOval(bellX, bellY, 8, 8);
-					g.setColor(Color.BLACK);
-					g.drawOval(bellX, bellY, 8, 8);
-					count++;
-				}
+			if (bellX < 250) {
 				
-			}
-			else if (bellX > 250)
-			{
-				if(bellX< bellX/bellY*bellX)
-				{
+				if(bellY < (bellY/bellX*bellX)) {
 					g.fillOval(bellX, bellY, 8, 8);
 					g.setColor(Color.BLACK);
 					g.drawOval(bellX, bellY, 8, 8);
-					count++;
+					++count;
+				}
+			}
+			else if (bellX > 250) {
+				
+				if(bellX< bellX/bellY*bellX) {
+					g.fillOval(bellX, bellY, 8, 8);
+					g.setColor(Color.BLACK);
+					g.drawOval(bellX, bellY, 8, 8);
+					++count;
 				}
 			}
 		} while (count <= 50);
 	}
 	
+	/**
+	 * This method draws the snowman on the drawing board.
+	 * @param g
+	 */
 	public static void drawSnowman(Graphics g)
 	{	
-		//Make a for loop to draw this.
-		for(int i = 0; i < 2; i++)
+		for(int i = 0; i < 2; ++i)
 		{
 			//Body.
 			g.setColor(Color.WHITE);
@@ -127,7 +136,10 @@ public class ChristmasTree1
 		}
 	}
 	
-	// This method prints out the Christmas message.
+	/**
+	 * This method prints out the Christmas message.
+	 * @param g
+	 */
 	public static void drawMessage(Graphics g)
 	{
 		g.setColor(Color.BLACK);
